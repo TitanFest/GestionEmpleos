@@ -3,7 +3,7 @@
 const User = require('../models/User');
 
 // Crear un nuevo usuario
-exports.createUser = async (req, res) => {
+const createUser = async (req, res) => {
     try {
         const { name, email, password } = req.body;
         const newUser = await User.create({ name, email, password });
@@ -15,7 +15,7 @@ exports.createUser = async (req, res) => {
 };
 
 // Obtener todos los usuarios
-exports.getAllUsers = async (req, res) => {
+const getAllUsers = async (req, res) => {
     try {
         const users = await User.findAll();
         res.json(users);
@@ -26,7 +26,7 @@ exports.getAllUsers = async (req, res) => {
 };
 
 // Obtener un usuario por ID
-exports.getUserById = async (req, res) => {
+const getUserById = async (req, res) => {
     try {
         const { id } = req.params;
         const user = await User.findByPk(id);
@@ -42,7 +42,7 @@ exports.getUserById = async (req, res) => {
 };
 
 // Actualizar un usuario por ID
-exports.updateUser = async (req, res) => {
+const updateUser = async (req, res) => {
     try {
         const { id } = req.params;
         const [updated] = await User.update(req.body, {
@@ -61,7 +61,7 @@ exports.updateUser = async (req, res) => {
 };
 
 // Eliminar un usuario por ID
-exports.deleteUser = async (req, res) => {
+const deleteUser = async (req, res) => {
     try {
         const { id } = req.params;
         const deleted = await User.destroy({
@@ -76,4 +76,25 @@ exports.deleteUser = async (req, res) => {
         console.error('Error al eliminar el usuario:', error);
         res.status(500).json({ error: 'Error al eliminar el usuario' });
     }
+};
+
+// Buscar un usuario por correo electrónico
+const findUserByEmail = async (email) => {
+    try {
+        const user = await User.findOne({ where: { email } });
+        return user;
+    } catch (error) {
+        console.error('Error al buscar el usuario por email:', error);
+        throw error;
+    }
+};
+
+// Exportar las funciones
+module.exports = {
+    createUser,
+    getAllUsers,
+    getUserById,
+    updateUser,
+    deleteUser,
+    findUserByEmail,
 };
