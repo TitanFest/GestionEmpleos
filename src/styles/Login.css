@@ -1,0 +1,64 @@
+/* Estilos generales para el contenedor del login */
+.login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centra el contenido horizontalmente */
+    justify-content: center; /* Centra el contenido verticalmente */
+    height: 100vh; /* Altura completa de la ventana */
+    background-color: #f4f4f4; /* Color de fondo suave */
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+    border-radius: 10px; /* Bordes redondeados */
+}
+
+/* Estilo para el encabezado */
+.login-container h2 {
+    margin-bottom: 20px; /* Espacio debajo del título */
+    color: #333; /* Color del texto */
+}
+
+/* Estilo para el mensaje de error */
+.login-container p {
+    margin-top: 10px; /* Espacio arriba del mensaje de error */
+}
+
+/* Estilo para los elementos del formulario */
+form {
+    width: 100%; /* Ancho completo */
+    max-width: 300px; /* Ancho máximo del formulario */
+}
+
+/* Estilo para las etiquetas */
+label {
+    margin-top: 10px; /* Espacio encima de las etiquetas */
+    color: #555; /* Color del texto */
+}
+
+/* Estilo para los inputs */
+input {
+    width: 100%; /* Ancho completo */
+    padding: 10px; /* Espacio interno */
+    margin-top: 5px; /* Espacio encima del input */
+    border: 1px solid #ccc; /* Borde ligero */
+    border-radius: 5px; /* Bordes redondeados */
+    font-size: 16px; /* Tamaño de fuente */
+}
+
+/* Estilo para el botón */
+button {
+    width: 100%; /* Ancho completo */
+    padding: 10px; /* Espacio interno */
+    margin-top: 20px; /* Espacio encima del botón */
+    background-color: #007bff; /* Color de fondo */
+    color: white; /* Color del texto */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    font-size: 16px; /* Tamaño de fuente */
+    cursor: pointer; /* Cambia el cursor al pasar el mouse */
+    transition: background-color 0.3s ease; /* Transición suave */
+}
+
+/* Efecto al pasar el mouse sobre el botón */
+button:hover {
+    background-color: #0056b3; /* Color más oscuro al pasar el mouse */
+}
