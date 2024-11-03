@@ -1,0 +1,27 @@
+/* src/styles/sidebar.css */
+/* src/styles/Sidebar.css */
+.sidebar {
+  width: 200px;
+  background-color: #4a3f8c; /* Cambiado a un color más atractivo */
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  height: 100vh; /* Hacer que la barra lateral ocupe toda la altura */
+}
+
+.sidebar-btn {
+  background: none;
+  border: 1px solid white;
+  border-radius: 5px;
+  padding: 10px;
+  color: white;
+  cursor: pointer;
+  text-align: left;
+  transition: background-color 0.3s, transform 0.2s; /* Transiciones para suavizar el efecto */
+}
+
+.sidebar-btn:hover {
+  background-color: #6a5acd; /* Cambia de color al pasar el ratón */
+  transform: scale(1.05); /* Aumentar ligeramente el botón al pasar el ratón */
+}

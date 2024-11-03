@@ -4,7 +4,7 @@ import Login from './components/Login';
 import UserList from './pages/UserList';
 import Dashboard from './pages/dashboard';  // Ruta protegida
 import ProtectedRoute from './components/ProtectedRoute';
-import Home from './pages/home'; 
+import Home from './pages/Home'; 
 import Registro from './components/registro'; 
 
 function App() {
@@ -13,7 +13,7 @@ function App() {
 
       <Routes>
         <Route path="/" element={<Login />} />
-        <Route path="/home" element={<Home />} />
+        <Route path="/Home" element={<Home />} />
         <Route path="/registro" element={<Registro />} />
         <Route path="/dashboard" element={
             <ProtectedRoute>

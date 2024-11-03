@@ -1,0 +1,46 @@
+/* src/styles/MainContent.css */
+.main-content {
+  flex: 1;
+  background-color: #f5f5f5; /* Un color más suave */
+  padding: 20px;
+  border-radius: 8px; /* Bordes redondeados para el contenedor */
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.quick-jobs {
+  font-weight: bold;
+  font-size: 22px; /* Aumentar el tamaño de la fuente */
+  color: #4a3f8c;
+  padding: 15px;
+  border-radius: 5px;
+  background-color: #e0e0e0; /* Un color de fondo más oscuro */
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.job-card {
+  display: flex; /* Usar flex para alinear icono y texto */
+  align-items: center;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s; /* Animación de hover */
+}
+
+.job-card:hover {
+  transform: translateY(-5px); /* Elevar tarjeta al pasar el mouse */
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.job-icon {
+  margin-right: 10px; /* Espacio entre el icono y el texto */
+  color: #4a3f8c; /* Color del icono */
+}
+
+.job-title {
+  font-size: 16px; /* Ajustar tamaño de fuente del título */
+}
+

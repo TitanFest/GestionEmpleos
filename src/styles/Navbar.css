@@ -1,0 +1,105 @@
+/* src/styles/Navbar.css */
+/* src/styles/Navbar.css */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #f5f8fc;
+  padding: 8px 20px;
+  color: #333;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+
+.menu-btn {
+  background-color: #4a3f8c;
+  color: white;
+  border: 1px solid #4a3f8c;
+  border-radius: 4px;
+  padding: 6px 12px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-left: 5px;
+  min-width: 80px;
+}
+
+
+.logo {
+  font-weight: bold;
+  font-size: 24px;
+  color: #1a2a5a;
+  margin-right: 20px;
+}
+
+
+.search-bar {
+  display: flex;
+  flex-grow: 1;
+  max-width: 800px;
+  margin: 0 30px;
+}
+
+.search-bar input {
+  padding: 10px 20px;
+  border: 2px solid #ddd;
+  border-radius: 8px 0 0 8px;
+  width: 100%;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.search-bar input:focus {
+
+  border-color: #4a3f8c;
+  box-shadow: 0 0 5px rgba(74, 63, 140, 0.2);
+  padding: 10px 30px; 
+  border-radius: 0 8px 8px 0;
+  border: none;
+}
+
+.search-btn {
+  background-color: #4a3f8c;
+  border: none;
+  padding: 10px 30px;
+  color: white;
+  cursor: pointer;
+  border-radius: 0 8px 8px 0;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.search-btn:hover {
+  background-color: #3d3575;
+}
+
+.register-btn, .login-btn {
+  background-color: #4a3f8c;
+  color: white;
+  border: 1px solid #4a3f8c;
+  border-radius: 4px;
+  padding: 6px 12px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-left: 5px;
+  min-width: 80px;
+}
+
+.login-btn {
+  background-color: transparent;
+  color: #402ea7;
+}
+
+.register-btn:hover, .login-btn:hover, menu-btn:hover {
+  background-color: #3d3575;
+  color: white;
+}
+
+.nav-buttons {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-left: 15px;
+}
+
