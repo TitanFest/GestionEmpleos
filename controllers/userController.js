@@ -2,7 +2,6 @@
 
 const User = require('../models/User');
 
-// Crear un nuevo usuario
 const createUser = async (req, res) => {
     try {
         const { name, email, password } = req.body;
@@ -14,7 +13,6 @@ const createUser = async (req, res) => {
     }
 };
 
-// Obtener todos los usuarios
 const getAllUsers = async (req, res) => {
     try {
         const users = await User.findAll();
@@ -25,7 +23,6 @@ const getAllUsers = async (req, res) => {
     }
 };
 
-// Obtener un usuario por ID
 const getUserById = async (req, res) => {
     try {
         const { id } = req.params;
@@ -41,7 +38,6 @@ const getUserById = async (req, res) => {
     }
 };
 
-// Actualizar un usuario por ID
 const updateUser = async (req, res) => {
     try {
         const { id } = req.params;
@@ -60,7 +56,6 @@ const updateUser = async (req, res) => {
     }
 };
 
-// Eliminar un usuario por ID
 const deleteUser = async (req, res) => {
     try {
         const { id } = req.params;
@@ -78,7 +73,6 @@ const deleteUser = async (req, res) => {
     }
 };
 
-// Buscar un usuario por correo electrónico
 const findUserByEmail = async (email) => {
     try {
         const user = await User.findOne({ where: { email } });
@@ -89,7 +83,6 @@ const findUserByEmail = async (email) => {
     }
 };
 
-// Exportar las funciones
 module.exports = {
     createUser,
     getAllUsers,

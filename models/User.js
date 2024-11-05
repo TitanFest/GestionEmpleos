@@ -1,16 +1,27 @@
 // models/User.js
 
 const { DataTypes } = require('sequelize');
-const { sequelize } = require('../database'); // Importa la instancia de Sequelize
+const { sequelize } = require('../database');
 const bcrypt = require('bcrypt');
 
-
-// Define el modelo de Usuario
 const User = sequelize.define('User', {
     id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true,
+    },
+    apellido: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
+    documento: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        unique: true,
+    },
+    telefono: {
+        type: DataTypes.STRING,
+        allowNull: false,
     },
     name: {
         type: DataTypes.STRING,
@@ -45,5 +56,4 @@ const User = sequelize.define('User', {
     tableName: 'users', // Nombre de la tabla en la base de datos
 });
 
-// Exporta el modelo
 module.exports = User;

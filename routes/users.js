@@ -7,41 +7,29 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const authMiddleware = require('../middlewares/authMiddleware');
 
-// Ruta para crear un nuevo usuario
-router.post('/', userController.createUser);
+router.post('/registrar', userController.createUser);
 
-// Otras rutas...
+router.get('/obtener', authMiddleware, userController.getAllUsers);
 
-// Ruta para obtener todos los usuarios (protegida)
-router.get('/', authMiddleware, userController.getAllUsers);
+router.get('/obtener/:id', authMiddleware, userController.getUserById);
 
+router.put('/actualizar/:id', authMiddleware, userController.updateUser);
 
-// Ruta para obtener un usuario por ID
-router.get('/:id', userController.getUserById);
+router.delete('/eliminar/:id', authMiddleware, userController.deleteUser);
 
-// Ruta para actualizar un usuario por ID
-router.put('/:id', userController.updateUser);
-
-// Ruta para eliminar un usuario por ID
-router.delete('/:id', userController.deleteUser);
-
-// Nueva ruta de login
 router.post('/login', async (req, res) => {
-    const { email, password } = req.body;
 
-    // Busca al usuario en la base de datos
+    const { email, password } = req.body;
     const user = await userController.findUserByEmail(email);
     if (!user) {
         return res.status(401).json({ message: 'Usuario no encontrado' });
     }
 
-    // Verifica la contraseña
     const isPasswordValid = await bcrypt.compare(password, user.password);
     if (!isPasswordValid) {
         return res.status(401).json({ message: 'Contraseña incorrecta' });
     }
 
-    // Genera el token JWT
     const token = jwt.sign({ userId: user.id }, process.env.JWT_SECRET, { expiresIn: '1h' });
     res.json({ token, user });
 });

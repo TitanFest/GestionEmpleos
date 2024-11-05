@@ -1,29 +1,30 @@
 // server.js
 
 const express = require('express');
-const { testConnection, sequelize } = require('./database'); // Importa la función de prueba y Sequelize
+const { testConnection, sequelize } = require('./database');
 require('dotenv').config();
 const User = require('./models/User'); // Importa el modelo de Usuario (a crear en el siguiente paso)
+const OfertasTrabajo = require('./models/OfertasTrabajo');
 const app = express();
 const PORT = process.env.PORT || 5000;
 
 const cors = require('cors');
 app.use(cors({
-    origin: 'http://localhost:3000', // URL del frontend en desarrollo
+    origin: 'http://localhost:3000', 
     credentials: true
 }));
 
 app.use(express.json());
 
-// Rutas básicas
 app.get('/', (req, res) => {
     res.send('¡Bienvenido a la API!');
 });
 
-// Middleware para manejar rutas de usuarios
-app.use('/api/users', require('./routes/users')); // Asegúrate de crear este archivo
 
-// Middleware para manejo de errores
+app.use('/Usuarios/', require('./routes/users')); // Asegúrate de crear este archivo
+
+app.use('Trabajos/', require())
+
 app.use((err, req, res, next) => {
     console.error(err.stack);
     res.status(500).send('¡Algo salió mal!');
@@ -33,7 +34,7 @@ app.use((err, req, res, next) => {
 const startServer = async () => {
     try {
         await testConnection();
-        await sequelize.sync({ alter : true /*, force : true*/ }); // Sincroniza todos los modelos
+        await sequelize.sync({ alter : true , force : true }); // Sincroniza todos los modelos
         console.log('Modelos sincronizados con la base de datos.');
         
         app.listen(PORT, () => {
