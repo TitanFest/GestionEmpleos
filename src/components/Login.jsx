@@ -5,22 +5,19 @@ import '../styles/Login.css';
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [error, setError] = useState(null);  // Para manejar errores
+  const [error, setError] = useState(null);  
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    setError(null);  // Limpiar errores previos
+    setError(null);  
 
     try {
-      // Enviar credenciales y obtener el token
       const token = await loginUser({ email, password });
       
-      // Guardar el token en localStorage
       saveToken(token);
 
       console.log('Login successful. JWT:', token);
-      // Redirigir a la página protegida
-      window.location.href = '/dashboard';  // Cambia esto por la ruta que desees
+      window.location.href = '/dashboard'; 
     } catch (error) {
       setError('Login failed. Please check your credentials.');
       console.error('Error during login:', error);

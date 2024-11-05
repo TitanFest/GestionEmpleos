@@ -6,7 +6,7 @@ export const fetchProtectedData = async () => {
   const response = await fetch('https://localhost:3000/UserList', {
     method: 'GET',
     headers: {
-      'Authorization': `Bearer ${token}`,  // Añadir el JWT al header
+      'Authorization': `Bearer ${token}`,  
     }
   });
 

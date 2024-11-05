@@ -21,7 +21,6 @@ const MainContent = () => {
         'Capacidad de trabajo en equipo'
       ]
     },
-    // ... resto de trabajos con información similar
   ];
 
   const handleJobClick = (job) => {

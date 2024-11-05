@@ -1,35 +1,50 @@
 import React, { useState } from 'react';
 import '../styles/registro.css';
-
+import axios from 'axios';
 const Registro = () => {
-  const [nombre, setNombre] = useState('');
+  const [name, setNombre] = useState('');
   const [apellido, setApellido] = useState('');
   const [documento, setDocumento] = useState('');
   const [telefono, setTelefono] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-  const [error, setError] = useState(null); // Para manejar errores
+  const [error, setError] = useState(null); 
+  const [successMessage, setSuccessMessage] = useState(null);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    setError(null); // Limpiar errores previos
+    setError(null);
 
-    // Validación de contraseña
     if (password !== confirmPassword) {
       setError("Las contraseñas no coinciden");
       return;
     }
 
-    // Lógica para enviar el formulario de registro aquí
-    console.log({
-      nombre,
-      apellido,
-      documento,
-      telefono,
-      email,
-      password,
-    });
+try {
+
+  const response = await axios.post('http://localhost:5000/usuarios/registrar', {
+    name,
+    //apellido,
+    //documento,
+    //telefono,
+    email,
+    password,
+  });
+
+  if (response.status === 201) {
+    setSuccessMessage('Usuario registrado exitosamente');
+    setNombre('');
+    setApellido('');
+    setDocumento('');
+    setTelefono('');
+    setEmail('');
+    setPassword('');
+    setConfirmPassword('');
+  }
+} catch (error) {
+  setError('Error al registrar el usuario. Intente de nuevo.');
+}
   };
 
   return (
@@ -40,7 +55,7 @@ const Registro = () => {
         <label>Nombre:</label>
         <input 
           type="text" 
-          value={nombre} 
+          value={name} 
           onChange={(e) => setNombre(e.target.value)} 
           required 
         />

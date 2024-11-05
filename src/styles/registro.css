@@ -1,33 +1,29 @@
-/* Contenedor principal del formulario */
 .registro-container {
   width: 450px;
   margin: 60px auto;
   padding: 40px;
   border-radius: 12px;
-  background-color: #fafafa; /* Fondo gris muy claro */
-  border: 1px solid #ffffff; /* Bordes blancos */
+  background-color: #fafafa;
+  border: 1px solid #ffffff;
   box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1);
   font-family: Arial, sans-serif;
   color: #333;
 }
 
-/* Título */
 h2 {
   text-align: center;
-  color: #333; /* Texto oscuro */
+  color: #333;
   font-weight: 700;
   margin-bottom: 20px;
   font-size: 24px;
 }
 
-/* Formulario */
 form {
   display: flex;
   flex-direction: column;
-  gap: 20px; /* Espaciado entre campos */
+  gap: 20px;
 }
 
-/* Etiquetas */
 label {
   font-weight: 600;
   color: #666;
@@ -35,7 +31,6 @@ label {
   font-size: 15px;
 }
 
-/* Campos de entrada */
 input {
   padding: 12px;
   border: 1px solid #dcdcdc;
@@ -46,7 +41,6 @@ input {
   transition: border-color 0.3s, box-shadow 0.3s, background-color 0.3s;
 }
 
-/* Efecto de enfoque en los campos de entrada */
 input:focus {
   border-color: #4CAF50;
   background-color: #ffffff;
@@ -54,7 +48,6 @@ input:focus {
   outline: none;
 }
 
-/* Botón */
 button {
   margin-top: 15px;
   padding: 14px;
@@ -68,21 +61,18 @@ button {
   transition: background-color 0.3s, box-shadow 0.3s;
 }
 
-/* Efecto hover en el botón */
 button:hover {
   background-color: #45a049;
   box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
   transform: translateY(-2px);
 }
 
-/* Efecto al hacer clic en el botón */
 button:active {
   background-color: #3e8e41;
   transform: translateY(0);
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* Estilo para el mensaje de error */
 p {
   color: #ff4d4d;
   font-size: 14px;
@@ -91,11 +81,9 @@ p {
   margin-top: -10px;
 }
 
-/* Añadir un mensaje informativo */
 p.info {
   color: #666;
   font-size: 13px;
   text-align: center;
   margin-top: 20px;
 }
-
