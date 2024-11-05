@@ -114,4 +114,74 @@ textarea {
   .create-job-container {
     margin: 20px;
   }
+}
+
+.vacancies-input {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  max-width: 200px;
+}
+
+.vacancy-btn {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f5f5f5;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 18px;
+  color: #4a3f8c;
+  transition: all 0.2s ease;
+}
+
+.vacancy-btn:hover:not(:disabled) {
+  background-color: #e5e5e5;
+  border-color: #4a3f8c;
+}
+
+.vacancy-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.vacancy-number {
+  width: 60px;
+  text-align: center;
+  padding: 5px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.vacancy-number::-webkit-inner-spin-button,
+.vacancy-number::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.vacancy-number:focus {
+  outline: none;
+  border-color: #4a3f8c;
+  box-shadow: 0 0 0 2px rgba(74, 63, 140, 0.1);
+}
+
+/* Estilo para Firefox */
+.vacancy-number {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+/* Asegurarse de que los botones no envíen el formulario */
+.vacancy-btn:focus {
+  outline: none;
+}
+
+/* Estilo para el hover del contenedor completo */
+.vacancies-input:hover .vacancy-btn:not(:disabled),
+.vacancies-input:hover .vacancy-number {
+  border-color: #4a3f8c;
 } 

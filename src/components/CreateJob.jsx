@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import '../styles/CreateJob.css';
-import { FaBriefcase, FaMapMarkerAlt, FaMoneyBillWave, FaClock } from 'react-icons/fa';
+import { FaBriefcase, FaMapMarkerAlt, FaMoneyBillWave, FaClock, FaTag, FaUsers } from 'react-icons/fa';
 
 const CreateJob = () => {
   const [jobData, setJobData] = useState({
@@ -9,9 +9,11 @@ const CreateJob = () => {
     location: '',
     salary: '',
     type: 'Tiempo completo',
+    category: '',
     description: '',
     requirements: '',
-    benefits: ''
+    benefits: '',
+    vacancies: 1,
   });
 
   const handleChange = (e) => {
@@ -28,18 +30,44 @@ const CreateJob = () => {
     console.log(jobData);
   };
 
+  const handleVacanciesChange = (operation) => {
+    setJobData(prevState => ({
+      ...prevState,
+      vacancies: operation === 'increment' 
+        ? Math.min(prevState.vacancies + 1, 99) // Máximo 99 vacantes
+        : Math.max(prevState.vacancies - 1, 1)  // Mínimo 1 vacante
+    }));
+  };
+
+  // Lista de categorías disponibles
+  const jobCategories = [
+    'Tecnología',
+    'Marketing',
+    'Diseño',
+    'Ventas',
+    'Administración',
+    'Recursos Humanos',
+    'Finanzas',
+    'Educación',
+    'Salud',
+    'Ingeniería',
+    'Servicio al Cliente',
+    'Otros'
+  ];
+
   return (
     <div className="create-job-container">
       <div className="create-job-header">
         <FaBriefcase className="header-icon" />
         <h2>Crear Nueva Oferta de Empleo</h2>
+        <span className="required-legend">* Campos requeridos</span>
       </div>
 
       <form onSubmit={handleSubmit} className="create-job-form">
         <div className="form-group">
           <label>
             <FaBriefcase className="input-icon" />
-            Título del puesto
+            Título del puesto *
           </label>
           <input
             type="text"
@@ -54,7 +82,7 @@ const CreateJob = () => {
         <div className="form-group">
           <label>
             <FaBriefcase className="input-icon" />
-            Empresa
+            Empresa <span className="optional-text">(Opcional)</span>
           </label>
           <input
             type="text"
@@ -62,7 +90,6 @@ const CreateJob = () => {
             value={jobData.company}
             onChange={handleChange}
             placeholder="ej. Tech Solutions SA"
-            required
           />
         </div>
 
@@ -97,21 +124,83 @@ const CreateJob = () => {
           </div>
         </div>
 
-        <div className="form-group">
-          <label>
-            <FaClock className="input-icon" />
-            Tipo de empleo
-          </label>
-          <select
-            name="type"
-            value={jobData.type}
-            onChange={handleChange}
-          >
-            <option value="Tiempo completo">Tiempo completo</option>
-            <option value="Medio tiempo">Medio tiempo</option>
-            <option value="Remoto">Remoto</option>
-            <option value="Freelance">Freelance</option>
-          </select>
+        <div className="form-row">
+          <div className="form-group">
+            <label>
+              <FaTag className="input-icon" />
+              Categoría
+            </label>
+            <select
+              name="category"
+              value={jobData.category}
+              onChange={handleChange}
+              required
+              className="category-select"
+            >
+              <option value="">Selecciona una categoría</option>
+              {jobCategories.map((category) => (
+                <option key={category} value={category}>
+                  {category}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          <div className="form-group">
+            <label>
+              <FaClock className="input-icon" />
+              Tipo de empleo
+            </label>
+            <select
+              name="type"
+              value={jobData.type}
+              onChange={handleChange}
+            >
+              <option value="Tiempo completo">Tiempo completo</option>
+              <option value="Medio tiempo">Medio tiempo</option>
+              <option value="Remoto">Remoto</option>
+              <option value="Freelance">Freelance</option>
+            </select>
+          </div>
+        </div>
+
+        <div className="form-row">
+          <div className="form-group">
+            <label>
+              <FaUsers className="input-icon" />
+              Número de Vacantes
+            </label>
+            <div className="vacancies-input">
+              <button 
+                type="button" 
+                className="vacancy-btn"
+                onClick={() => handleVacanciesChange('decrement')}
+                disabled={jobData.vacancies <= 1}
+              >
+                -
+              </button>
+              <input
+                type="number"
+                name="vacancies"
+                value={jobData.vacancies}
+                onChange={(e) => {
+                  const value = Math.max(1, Math.min(99, parseInt(e.target.value) || 1));
+                  setJobData(prev => ({ ...prev, vacancies: value }));
+                }}
+                min="1"
+                max="99"
+                className="vacancy-number"
+              />
+              <button 
+                type="button" 
+                className="vacancy-btn"
+                onClick={() => handleVacanciesChange('increment')}
+                disabled={jobData.vacancies >= 99}
+              >
+                +
+              </button>
+            </div>
+          </div>
         </div>
 
         <div className="form-group">
