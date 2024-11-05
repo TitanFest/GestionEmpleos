@@ -25,9 +25,9 @@ try {
 
   const response = await axios.post('http://localhost:5000/usuarios/registrar', {
     name,
-    //apellido,
-    //documento,
-    //telefono,
+    apellido,
+    documento,
+    telefono,
     email,
     password,
   });
@@ -51,6 +51,7 @@ try {
     <div className="registro-container">
       <h2>Registro</h2>
       {error && <p style={{ color: 'red' }}>{error}</p>}
+      {successMessage && <p style={{ color: 'green' }}>{successMessage}</p>}
       <form onSubmit={handleSubmit}>
         <label>Nombre:</label>
         <input 
