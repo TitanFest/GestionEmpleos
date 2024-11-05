@@ -28,13 +28,25 @@ const OfertasTrabajo = sequelize.define('OfertasTrabajo', {
         type: DataTypes.STRING,
         allowNull: false,
     },
+    estado: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false,
+    },
     descripcion: {
         type: DataTypes.TEXT,
         allowNull: true,
     },
     requerimientos: {
-        type: DataTypes.ARRAY(DataTypes.STRING), 
+        type: DataTypes.TEXT,
         allowNull: true,
+        get() {
+            return this.getDataValue('requerimientos') 
+                ? JSON.parse(this.getDataValue('requerimientos')) 
+                : [];
+        },
+        set(value) {
+            this.setDataValue('requerimientos', JSON.stringify(value));
+        },
     },
     createdAt: {
         type: DataTypes.DATE,

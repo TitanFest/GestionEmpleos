@@ -1,11 +1,11 @@
-// controllers/userController.js
+// controllers/OfertasController.js
 
-const User = require('../models/User');
+const OfertasTrabajo = require('../models/OfertasTrabajo');
 
-const createUser = async (req, res) => {
+const createWork = async (req, res) => {
     try {
-        const { name, email, password, apellido, documento, telefono } = req.body;
-        const newUser = await User.create({ name, email, password, apellido, documento, telefono });
+        const { name, email, password } = req.body;
+        const newUser = await User.create({ name, email, password });
         res.status(201).json(newUser);
     } catch (error) {
         console.error('Error al crear el usuario:', error);
@@ -13,7 +13,7 @@ const createUser = async (req, res) => {
     }
 };
 
-const getAllUsers = async (req, res) => {
+const getAllWorks = async (req, res) => {
     try {
         const users = await User.findAll();
         res.json(users);
@@ -83,11 +83,11 @@ const findUserByEmail = async (email) => {
     }
 };
 
-module.exports = {
+/*module.exports = {
     createUser,
     getAllUsers,
     getUserById,
     updateUser,
     deleteUser,
     findUserByEmail,
-};
+};*/
