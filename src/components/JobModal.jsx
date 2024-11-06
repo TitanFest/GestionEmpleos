@@ -14,36 +14,34 @@ const JobModal = ({ job, onClose }) => {
         
         <div className="modal-header">
           <FaBriefcase className="modal-icon" />
-          <h2>{job.title}</h2>
+          <h2>{job.titulo}</h2>
         </div>
 
         <div className="modal-body">
           <div className="job-detail">
             <FaMapMarkerAlt className="detail-icon" />
-            <span>{job.location || 'Ubicación no especificada'}</span>
+            <span>{job.localizacion || 'Ubicación no especificada'}</span>
           </div>
 
           <div className="job-detail">
             <FaMoneyBillWave className="detail-icon" />
-            <span>{job.salary || 'Salario no especificado'}</span>
+            <span>{job.salario || 'Salario no especificado'}</span>
           </div>
 
           <div className="job-detail">
             <FaClock className="detail-icon" />
-            <span>{job.type || 'Tiempo completo'}</span>
+            <span>{job.horario || 'Tiempo completo'}</span>
           </div>
 
           <div className="job-description">
             <h3>Descripción del puesto</h3>
-            <p>{job.description || 'No hay descripción disponible'}</p>
+            <p>{job.descripcion || 'No hay descripción disponible'}</p>
           </div>
 
           <div className="job-requirements">
             <h3>Requisitos</h3>
             <ul>
-              {job.requirements?.map((req, index) => (
-                <li key={index}>{req}</li>
-              )) || <li>No hay requisitos especificados</li>}
+              {job.requerimientos }
             </ul>
           </div>
         </div>

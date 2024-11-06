@@ -12,8 +12,10 @@ const Navbar = () => {
       </div>
       <div className="nav-buttons">
       <button className="menu-btn">☰</button>
-        <button className="register-btn">REGÍSTRAR</button>
-        <button className="login-btn">LOGIN</button>
+      <button className="register-btn" onClick={() => window.location.href = '/registro'}>REGISTRAR</button>
+      <button className="login-btn" onClick={() => window.location.href = '/login'}>LOGIN</button>
+
+
       </div>
     </div>
   );

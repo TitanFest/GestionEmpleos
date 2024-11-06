@@ -2,26 +2,26 @@ import React, { useState } from 'react';
 import '../styles/MainContent.css';
 import { FaBriefcase } from 'react-icons/fa';
 import JobModal from './JobModal';
+import axios from 'axios'
+import { useEffect } from 'react';
 
 const MainContent = () => {
-  const [selectedJob, setSelectedJob] = useState(null);
+const [jobOffers, setJobOffers] = useState([]);
+const [selectedJob, setSelectedJob] = useState("");
 
-  const jobOffers = [
-    { 
-      id: 1, 
-      title: 'Desarrollador Frontend',
-      location: 'Lima, Perú',
-      salary: 'S/. 3,000 - 5,000',
-      type: 'Tiempo completo',
-      description: 'Buscamos un desarrollador frontend con experiencia en React...',
-      requirements: [
-        'Experiencia con React',
-        'Conocimientos de HTML, CSS y JavaScript',
-        'Experiencia con control de versiones Git',
-        'Capacidad de trabajo en equipo'
-      ]
-    },
-  ];
+useEffect(() => {
+  const fetchJobOffers = async () => {
+    try {
+      const response = await axios.get('http://localhost:5000/Trabajos/Obtener');
+      setJobOffers(response.data);
+    } catch (error) {
+      console.error('Error al obtener los trabajos:', error);
+    }
+  };
+
+  fetchJobOffers();
+}, []);
+
 
   const handleJobClick = (job) => {
     setSelectedJob(job);
@@ -37,7 +37,7 @@ const MainContent = () => {
           onClick={() => handleJobClick(job)}
         >
           <FaBriefcase className="job-icon" />
-          <span className="job-title">{job.title}</span>
+          <span className="job-title">{job.titulo}</span>
         </div>
       ))}
 
