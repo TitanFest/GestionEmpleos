@@ -1,79 +1,79 @@
 // controllers/OfertasController.js
 
-const OfertasTrabajo = require('../models/OfertasTrabajo');
+const OfertaTrabajo = require('../models/OfertasTrabajo');
 
 const createWork = async (req, res) => {
     try {
-        const { name, email, password } = req.body;
-        const newUser = await User.create({ name, email, password });
-        res.status(201).json(newUser);
+        const { titulo, categoria, localizacion, horario ,salario, estado, descripcion, requerimientos } = req.body;
+        const newJob = await OfertaTrabajo.create({ titulo, categoria, localizacion, horario ,salario, estado, descripcion, requerimientos });
+        res.status(201).json(newJob);
     } catch (error) {
-        console.error('Error al crear el usuario:', error);
-        res.status(500).json({ error: 'Error al crear el usuario' });
+        console.error('Error al crear oferta de trabajo:', error);
+        res.status(500).json({ error: 'Error al crear oferta de trabajo' });
     }
 };
 
 const getAllWorks = async (req, res) => {
     try {
-        const users = await User.findAll();
-        res.json(users);
+        const Jobs = await OfertaTrabajo.findAll();
+        res.json(Jobs);
     } catch (error) {
-        console.error('Error al obtener usuarios:', error);
-        res.status(500).json({ error: 'Error al obtener usuarios' });
+        console.error('Error al obtener ofertas trabajos:', error);
+        res.status(500).json({ error: 'Error al obtener ofertas de trabajo' });
     }
 };
 
-const getUserById = async (req, res) => {
+const getWorkById = async (req, res) => {
     try {
         const { id } = req.params;
-        const user = await User.findByPk(id);
-        if (user) {
-            res.json(user);
+        const Job = await User.findByPk(id);
+        if (Job) {
+            res.json(Job);
         } else {
-            res.status(404).json({ error: 'Usuario no encontrado' });
+            res.status(404).json({ error: 'Oferta no encontrada' });
         }
     } catch (error) {
-        console.error('Error al obtener el usuario:', error);
-        res.status(500).json({ error: 'Error al obtener el usuario' });
+        console.error('Error al obtener oferta:', error);
+        res.status(500).json({ error: 'Error al obtener la oferta' });
     }
 };
 
-const updateUser = async (req, res) => {
+const updateWork = async (req, res) => {
     try {
         const { id } = req.params;
-        const [updated] = await User.update(req.body, {
+        const [updated] = await OfertaTrabajo.update(req.body, {
             where: { id },
         });
         if (updated) {
-            const updatedUser = await User.findByPk(id);
-            res.json(updatedUser);
+            const updatedWork = await OfertaTrabajo.findByPk(id);
+            res.json(updatedWork);
         } else {
-            res.status(404).json({ error: 'Usuario no encontrado' });
+            res.status(404).json({ error: 'Oferta no encontrada' });
         }
     } catch (error) {
-        console.error('Error al actualizar el usuario:', error);
-        res.status(500).json({ error: 'Error al actualizar el usuario' });
+        console.error('Error al obtener oferta:', error);
+        res.status(500).json({ error: 'Error al actualizar la oferta' });
     }
 };
 
-const deleteUser = async (req, res) => {
+const deleteWork = async (req, res) => {
     try {
         const { id } = req.params;
-        const deleted = await User.destroy({
+        const deleted = await OfertaTrabajo.destroy({
             where: { id },
         });
         if (deleted) {
-            res.json({ message: 'Usuario eliminado correctamente' });
+            res.json({ message: 'Oferta eliminada correctamente' });
         } else {
-            res.status(404).json({ error: 'Usuario no encontrado' });
+            res.status(404).json({ error: 'Oferta no encontrada' });
         }
     } catch (error) {
-        console.error('Error al eliminar el usuario:', error);
-        res.status(500).json({ error: 'Error al eliminar el usuario' });
+        console.error('Error al eliminar oferta:', error);
+        res.status(500).json({ error: 'Error al eliminar oferta' });
     }
 };
 
-const findUserByEmail = async (email) => {
+/*const findUserByEmail = async (email) => {
     try {
         const user = await User.findOne({ where: { email } });
         return user;
@@ -81,13 +81,12 @@ const findUserByEmail = async (email) => {
         console.error('Error al buscar el usuario por email:', error);
         throw error;
     }
-};
-
-/*module.exports = {
-    createUser,
-    getAllUsers,
-    getUserById,
-    updateUser,
-    deleteUser,
-    findUserByEmail,
 };*/
+
+module.exports = {
+    createWork,
+    getAllWorks,
+    getWorkById,
+    updateWork,
+    deleteWork,
+};

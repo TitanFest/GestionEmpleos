@@ -13,7 +13,15 @@ const OfertasTrabajo = sequelize.define('OfertasTrabajo', {
         type: DataTypes.STRING,
         allowNull: false,
     },
-    localización: {
+    categoria: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
+    localizacion: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
+    horario: {
         type: DataTypes.STRING,
         allowNull: false,
     },
@@ -24,10 +32,6 @@ const OfertasTrabajo = sequelize.define('OfertasTrabajo', {
             isInt: true,
         },
     },
-    tipo: {
-        type: DataTypes.STRING,
-        allowNull: false,
-    },
     estado: {
         type: DataTypes.BOOLEAN,
         allowNull: false,
@@ -37,7 +41,7 @@ const OfertasTrabajo = sequelize.define('OfertasTrabajo', {
         allowNull: true,
     },
     requerimientos: {
-        type: DataTypes.TEXT,
+        type: DataTypes.JSON,
         allowNull: true,
         get() {
             return this.getDataValue('requerimientos') 

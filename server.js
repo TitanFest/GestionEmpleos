@@ -21,16 +21,15 @@ app.get('/', (req, res) => {
 });
 
 
-app.use('/Usuarios/', require('./routes/users')); // Asegúrate de crear este archivo
+app.use('/Usuarios/', require('./routes/users')); 
 
-//app.use('Trabajos/', require())
+app.use('/Trabajos/', require('./routes/ofertas'));
 
 app.use((err, req, res, next) => {
     console.error(err.stack);
     res.status(500).send('¡Algo salió mal!');
 });
 
-// Sincroniza los modelos con la base de datos y inicia el servidor
 const startServer = async () => {
     try {
         await testConnection();
