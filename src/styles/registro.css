@@ -1,89 +1,130 @@
+.registro-wrapper {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.registro-wrapper::after {
+    content: "";
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: 
+        linear-gradient(45deg, transparent 0%, transparent 100%),
+        url("data:image/svg+xml,%3Csvg width='200%25' height='200%25' xmlns='http://www.w3.org/2000/svg'%3E%3Ctext x='10%25' y='10%25' font-size='60' font-family='Arial' fill='rgba(255,255,255,0.06)' text-anchor='middle'%3EValleJobs%3C/text%3E%3Ctext x='30%25' y='15%25' font-size='120' font-family='Impact' fill='rgba(255,255,255,0.08)' text-anchor='middle'%3EValleJobs%3C/text%3E%3Ctext x='50%25' y='20%25' font-size='90' font-family='Georgia' fill='rgba(255,255,255,0.07)' text-anchor='middle'%3EValleJobs%3C/text%3E%3Ctext x='70%25' y='25%25' font-size='75' font-family='Verdana' fill='rgba(255,255,255,0.05)' text-anchor='middle'%3EValleJobs%3C/text%3E%3Ctext x='90%25' y='30%25' font-size='100' font-family='Times New Roman' font-style='italic' fill='rgba(255,255,255,0.06)' text-anchor='middle'%3EValleJobs%3C/text%3E%3Ctext x='20%25' y='35%25' font-size='85' font-family='Helvetica' fill='rgba(255,255,255,0.07)' text-anchor='middle'%3EValleJobs%3C/text%3E%3Ctext x='40%25' y='40%25' font-size='110' font-family='Courier' fill='rgba(255,255,255,0.08)' text-anchor='middle'%3EValleJobs%3C/text%3E%3Ctext x='60%25' y='45%25' font-size='95' font-family='Trebuchet MS' fill='rgba(255,255,255,0.06)' text-anchor='middle'%3EValleJobs%3C/text%3E%3Ctext x='80%25' y='50%25' font-size='130' font-family='Palatino' fill='rgba(255,255,255,0.07)' text-anchor='middle'%3EValleJobs%3C/text%3E%3Ctext x='15%25' y='55%25' font-size='70' font-family='Arial Black' fill='rgba(255,255,255,0.05)' text-anchor='middle'%3EValleJobs%3C/text%3E%3Ctext x='35%25' y='60%25' font-size='140' font-family='Garamond' fill='rgba(255,255,255,0.08)' text-anchor='middle'%3EValleJobs%3C/text%3E%3Ctext x='55%25' y='65%25' font-size='80' font-family='Century Gothic' fill='rgba(255,255,255,0.06)' text-anchor='middle'%3EValleJobs%3C/text%3E%3Ctext x='75%25' y='70%25' font-size='115' font-family='Bookman' fill='rgba(255,255,255,0.07)' text-anchor='middle'%3EValleJobs%3C/text%3E%3Ctext x='95%25' y='75%25' font-size='125' font-family='Tahoma' fill='rgba(255,255,255,0.06)' text-anchor='middle'%3EValleJobs%3C/text%3E%3Ctext x='25%25' y='80%25' font-size='105' font-family='Arial' font-weight='bold' fill='rgba(255,255,255,0.08)' text-anchor='middle'%3EValleJobs%3C/text%3E%3Ctext x='45%25' y='85%25' font-size='65' font-family='Verdana' fill='rgba(255,255,255,0.05)' text-anchor='middle'%3EValleJobs%3C/text%3E%3Ctext x='65%25' y='90%25' font-size='135' font-family='Impact' fill='rgba(255,255,255,0.07)' text-anchor='middle'%3EValleJobs%3C/text%3E%3Ctext x='85%25' y='95%25' font-size='95' font-family='Times New Roman' font-style='italic' fill='rgba(255,255,255,0.06)' text-anchor='middle'%3EValleJobs%3C/text%3E%3C/svg%3E");
+    background-size: 100% 100%;
+    background-repeat: repeat;
+    opacity: 0.7;
+    pointer-events: none;
+    z-index: 0;
+    transform: rotate(-5deg) scale(1.2);
+    animation: backgroundMove 60s linear infinite;
+}
+
+@keyframes backgroundMove {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 100% 100%;
+    }
+}
+
 .registro-container {
-  width: 450px;
-  margin: 60px auto;
-  padding: 40px;
-  border-radius: 12px;
-  background-color: #fafafa;
-  border: 1px solid #ffffff;
-  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1);
-  font-family: Arial, sans-serif;
-  color: #333;
+    width: 450px;
+    margin: 0 auto;
+    padding: 40px;
+    border-radius: 12px;
+    background-color: rgba(255, 255, 255, 0.95);
+    border: 1px solid #ffffff;
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
+    font-family: Arial, sans-serif;
+    color: #333;
+    position: relative;
+    z-index: 1;
 }
 
 h2 {
-  text-align: center;
-  color: #333;
-  font-weight: 700;
-  margin-bottom: 20px;
-  font-size: 24px;
+    text-align: center;
+    color: #4a3f8c;
+    font-weight: 700;
+    margin-bottom: 20px;
+    font-size: 28px;
 }
 
 form {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
 label {
-  font-weight: 600;
-  color: #666;
-  margin-bottom: 5px;
-  font-size: 15px;
+    font-weight: 600;
+    color: #666;
+    margin-bottom: 5px;
+    font-size: 15px;
 }
 
 input {
-  padding: 12px;
-  border: 1px solid #dcdcdc;
-  border-radius: 8px;
-  font-size: 15px;
-  color: #333;
-  background-color: #f8f8f8;
-  transition: border-color 0.3s, box-shadow 0.3s, background-color 0.3s;
+    padding: 12px;
+    border: 1px solid #dcdcdc;
+    border-radius: 8px;
+    font-size: 15px;
+    color: #333;
+    background-color: #f8f8f8;
+    transition: border-color 0.3s, box-shadow 0.3s, background-color 0.3s;
 }
 
 input:focus {
-  border-color: #4CAF50;
-  background-color: #ffffff;
-  box-shadow: 0 0 6px rgba(76, 175, 80, 0.3);
-  outline: none;
+    border-color: #4CAF50;
+    background-color: #ffffff;
+    box-shadow: 0 0 6px rgba(76, 175, 80, 0.3);
+    outline: none;
 }
 
 button {
-  margin-top: 15px;
-  padding: 14px;
-  border: none;
-  border-radius: 8px;
-  background-color: #4CAF50;
-  color: white;
-  font-size: 17px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background-color 0.3s, box-shadow 0.3s;
+    margin-top: 15px;
+    padding: 14px;
+    border: none;
+    border-radius: 8px;
+    background-color: #4a3f8c;
+    color: white;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s;
 }
 
 button:hover {
-  background-color: #45a049;
-  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
-  transform: translateY(-2px);
+    background-color: #3d3575;
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px);
 }
 
 button:active {
-  background-color: #3e8e41;
-  transform: translateY(0);
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    background-color: #3b2e6e;
+    transform: translateY(0);
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 p {
-  color: #ff4d4d;
-  font-size: 14px;
-  font-weight: bold;
-  text-align: center;
-  margin-top: -10px;
+    color: #ff4d4d;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: -10px;
 }
 
 p.info {
-  color: #666;
-  font-size: 13px;
-  text-align: center;
-  margin-top: 20px;
+    color: #666;
+    font-size: 13px;
+    text-align: center;
+    margin-top: 20px;
 }

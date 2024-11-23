@@ -48,69 +48,71 @@ try {
   };
 
   return (
-    <div className="registro-container">
-      <h2>Registro</h2>
-      {error && <p style={{ color: 'red' }}>{error}</p>}
-      {successMessage && <p style={{ color: 'green' }}>{successMessage}</p>}
-      <form onSubmit={handleSubmit}>
-        <label>Nombre:</label>
-        <input 
-          type="text" 
-          value={name} 
-          onChange={(e) => setNombre(e.target.value)} 
-          required 
-        />
-        
-        <label>Apellido:</label>
-        <input 
-          type="text" 
-          value={apellido} 
-          onChange={(e) => setApellido(e.target.value)} 
-          required 
-        />
+    <div className="registro-wrapper">
+      <div className="registro-container">
+        <h2>Registro</h2>
+        {error && <p style={{ color: 'red' }}>{error}</p>}
+        {successMessage && <p style={{ color: 'green' }}>{successMessage}</p>}
+        <form onSubmit={handleSubmit}>
+          <label>Nombre:</label>
+          <input 
+            type="text" 
+            value={name} 
+            onChange={(e) => setNombre(e.target.value)} 
+            required 
+          />
+          
+          <label>Apellido:</label>
+          <input 
+            type="text" 
+            value={apellido} 
+            onChange={(e) => setApellido(e.target.value)} 
+            required 
+          />
 
-        <label>Documento:</label>
-        <input 
-          type="text" 
-          value={documento} 
-          onChange={(e) => setDocumento(e.target.value)} 
-          required 
-        />
+          <label>Documento:</label>
+          <input 
+            type="text" 
+            value={documento} 
+            onChange={(e) => setDocumento(e.target.value)} 
+            required 
+          />
 
-        <label>Teléfono:</label>
-        <input 
-          type="tel" 
-          value={telefono} 
-          onChange={(e) => setTelefono(e.target.value)} 
-          required 
-        />
+          <label>Teléfono:</label>
+          <input 
+            type="tel" 
+            value={telefono} 
+            onChange={(e) => setTelefono(e.target.value)} 
+            required 
+          />
 
-        <label>Email:</label>
-        <input 
-          type="email" 
-          value={email} 
-          onChange={(e) => setEmail(e.target.value)} 
-          required 
-        />
+          <label>Email:</label>
+          <input 
+            type="email" 
+            value={email} 
+            onChange={(e) => setEmail(e.target.value)} 
+            required 
+          />
 
-        <label>Contraseña:</label>
-        <input 
-          type="password" 
-          value={password} 
-          onChange={(e) => setPassword(e.target.value)} 
-          required 
-        />
+          <label>Contraseña:</label>
+          <input 
+            type="password" 
+            value={password} 
+            onChange={(e) => setPassword(e.target.value)} 
+            required 
+          />
 
-        <label>Confirmar Contraseña:</label>
-        <input 
-          type="password" 
-          value={confirmPassword} 
-          onChange={(e) => setConfirmPassword(e.target.value)} 
-          required 
-        />
+          <label>Confirmar Contraseña:</label>
+          <input 
+            type="password" 
+            value={confirmPassword} 
+            onChange={(e) => setConfirmPassword(e.target.value)} 
+            required 
+          />
 
-        <button type="submit">Registrarse</button>
-      </form>
+          <button type="submit">Registrarse</button>
+        </form>
+      </div>
     </div>
   );
 };
