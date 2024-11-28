@@ -17,7 +17,7 @@ const User = sequelize.define('User', {
     documento: {
         type: DataTypes.STRING,
         allowNull: false,
-        unique: true,
+        //unique: true,
     },
     telefono: {
         type: DataTypes.STRING,
@@ -30,7 +30,7 @@ const User = sequelize.define('User', {
     email: {
         type: DataTypes.STRING,
         allowNull: false,
-        unique: true,
+        unique: false,
         validate: {
             isEmail: true,
         },
@@ -53,7 +53,7 @@ const User = sequelize.define('User', {
         defaultValue: DataTypes.NOW,
     },
 }, {
-    tableName: 'users', // Nombre de la tabla en la base de datos
+    tableName: 'users', 
 });
 
 module.exports = User;

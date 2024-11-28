@@ -5,6 +5,7 @@ const { testConnection, sequelize } = require('./database');
 require('dotenv').config();
 const User = require('./models/User');
 const OfertasTrabajo = require('./models/OfertasTrabajo');
+const Categoria = require('./models/Categoria');
 const app = express();
 const PORT = process.env.PORT || 5000;
 
@@ -25,6 +26,8 @@ app.use('/Usuarios/', require('./routes/users'));
 
 app.use('/Trabajos/', require('./routes/ofertas'));
 
+app.use('/Categoria/', require('./routes/categoria'));
+
 app.use((err, req, res, next) => {
     console.error(err.stack);
     res.status(500).send('¡Algo salió mal!');
@@ -33,7 +36,8 @@ app.use((err, req, res, next) => {
 const startServer = async () => {
     try {
         await testConnection();
-        await sequelize.sync({ alter : true /*, force : true*/ }); // Sincroniza todos los modelos
+        await sequelize.sync({ alter : true /*, force : true*/ });
+//        await sequelize.sync({ alter : true /*, force : true*/ }); // Sincroniza todos los modelos
         console.log('Modelos sincronizados con la base de datos.');
         
         app.listen(PORT, () => {

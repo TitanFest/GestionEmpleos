@@ -9,6 +9,10 @@ router.post('/registrar', OfertasController.createWork);
 
 router.get('/obtener', OfertasController.getAllWorks);
 
+router.get('/obtener/:categoria', OfertasController.findWorkByCategory);
+
+router.get('/agpostulante', OfertasController.addPostulante);
+
 router.get('/obtener/:id', authMiddleware, OfertasController.getWorkById);
 
 router.put('/actualizar/:id', authMiddleware, OfertasController.updateWork);

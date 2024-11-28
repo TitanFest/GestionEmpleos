@@ -32,6 +32,19 @@ const OfertasTrabajo = sequelize.define('OfertasTrabajo', {
             isInt: true,
         },
     },
+    postulantes: {
+        type: DataTypes.JSON,
+        allowNull: true,
+        get() {
+            return this.getDataValue('postulantes') 
+                ? JSON.parse(this.getDataValue('postulantes')) 
+                : [];
+        },
+        set(value) {
+            this.setDataValue('postulantes', JSON.stringify(value));
+        },
+    },
+    
     estado: {
         type: DataTypes.BOOLEAN,
         allowNull: false,
@@ -61,7 +74,7 @@ const OfertasTrabajo = sequelize.define('OfertasTrabajo', {
         defaultValue: DataTypes.NOW,
     },
 }, {
-    tableName: 'OfertasTrabajo', 
+    tableName: 'ofertasTrabajo', 
 });
 
 module.exports = OfertasTrabajo;
