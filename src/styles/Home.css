@@ -10,3 +10,19 @@
     flex: 1;
   }
   
+  .menu-button {
+    background: none;
+    border: none;
+    color: #4a3f8c;
+    font-size: 24px;
+    cursor: pointer;
+    position: absolute; /* Posiciona el botón en la parte superior */
+    top: 20px; /* Ajusta la posición vertical */
+    right: 20px; /* Ajusta la posición horizontal */
+    transition: color 0.3s;
+  }
+  
+  .menu-button:hover {
+    color: #3d3575; /* Cambia el color al pasar el mouse */
+  }
+  

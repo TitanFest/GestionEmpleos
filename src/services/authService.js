@@ -40,3 +40,8 @@ export const getAllUsers = async () => {
     });
     return response.data; 
 };
+
+export const isLoggedIn = () => {
+    const token = getToken();
+    return token !== null;
+};

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { loginUser, saveToken } from '../services/authService';
-import { FaEye, FaEyeSlash } from 'react-icons/fa';
+import { FaEye, FaEyeSlash, FaArrowLeft } from 'react-icons/fa';
 import '../styles/Login.css';
 
 const Login = () => {
@@ -8,6 +8,9 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
   const [showPassword, setShowPassword] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [verificationCode, setVerificationCode] = useState('');
+  const [codeSent, setCodeSent] = useState(false);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -25,9 +28,26 @@ const Login = () => {
     }
   };
 
+  const handleForgotPassword = () => {
+    setModalOpen(true);
+    setCodeSent(false);
+  };
+
+  const handleSendCode = () => {
+    console.log('Código enviado a:', email);
+    setCodeSent(true);
+  };
+
+  const handleVerifyCode = () => {
+    console.log('Código verificado:', verificationCode);
+  };
+
   return (
     <div className="login-wrapper">
       <div className="login-container">
+        <button className="back-button" onClick={() => window.history.back()}>
+          <FaArrowLeft />
+        </button>
         <h2>Inicio de sesión</h2>
         {error && <p className="error-message">{error}</p>}
         <form onSubmit={handleSubmit}>
@@ -58,8 +78,36 @@ const Login = () => {
           </div>
           <button type="submit" className="login-btn">Entrar</button>
         </form>
-        <a href="/forgot-password" className="forgot-password-link">¿Olvidaste tu contraseña?</a>
+        <a href="#" className="forgot-password-link" onClick={handleForgotPassword}>¿Olvidaste tu contraseña?</a>
       </div>
+
+      {modalOpen && (
+        <div className="modal">
+          <div className="modal-content">
+            <button className="close-btn" onClick={() => setModalOpen(false)}>×</button>
+            <h2>Ingresa tu correo electrónico</h2>
+            <input 
+              type="email" 
+              value={email} 
+              onChange={(e) => setEmail(e.target.value)} 
+              placeholder="Tu email"
+            />
+            <button onClick={handleSendCode}>Enviar Código</button>
+            {codeSent && (
+              <>
+                <h2>Ingresa el código enviado</h2>
+                <input 
+                  type="text" 
+                  value={verificationCode} 
+                  onChange={(e) => setVerificationCode(e.target.value)} 
+                  placeholder="Código de verificación"
+                />
+                <button onClick={handleVerifyCode}>Verificar Código</button>
+              </>
+            )}
+          </div>
+        </div>
+      )}
     </div>
   );
 };

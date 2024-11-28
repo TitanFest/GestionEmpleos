@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { FaArrowLeft } from 'react-icons/fa';
 import '../styles/registro.css';
 import axios from 'axios';
 const Registro = () => {
@@ -50,6 +51,9 @@ try {
   return (
     <div className="registro-wrapper">
       <div className="registro-container">
+        <button className="back-button" onClick={() => window.history.back()}>
+          <FaArrowLeft />
+        </button>
         <h2>Registro</h2>
         {error && <p style={{ color: 'red' }}>{error}</p>}
         {successMessage && <p style={{ color: 'green' }}>{successMessage}</p>}
