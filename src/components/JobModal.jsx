@@ -1,9 +1,23 @@
 import React from 'react';
 import '../styles/JobModal.css';
 import { FaTimes, FaBriefcase, FaMapMarkerAlt, FaMoneyBillWave, FaClock } from 'react-icons/fa';
+import axios from 'axios';
 
 const JobModal = ({ job, onClose }) => {
   if (!job) return null;
+  const aplicar = async () => {
+    try {
+
+      const response = await axios.post('/http://localhost:5000/Trabajos/agpostulante', {
+        trabajoId: job.id,  
+        postulanteId: postulanteId,  
+      });
+      alert(response.data.message);
+    } catch (error) {
+      console.error('Error al postularse:', error);
+      alert('Ocurrió un error al intentar postularse.');
+    }
+  };
 
   return (
     <div className="modal-overlay">
@@ -47,7 +61,7 @@ const JobModal = ({ job, onClose }) => {
         </div>
 
         <div className="modal-footer">
-          <button className="apply-button">Aplicar ahora</button>
+          <button className="apply-button" onClick={aplicar}>Aplicar ahora</button>
         </div>
       </div>
     </div>

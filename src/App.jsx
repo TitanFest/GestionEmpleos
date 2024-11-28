@@ -4,7 +4,7 @@ import Login from './components/Login';
 import UserList from './pages/UserList';
 import Dashboard from './pages/dashboard';  
 import ProtectedRoute from './components/ProtectedRoute';
-import Home from './pages/Home'; 
+import Home from './pages/home'; 
 import Registro from './components/registro'; 
 import CreateJob from './components/CreateJob';
 import UserProfile from './components/UserProfile';

@@ -1,22 +1,39 @@
 // src/components/Sidebar.js
 import React from 'react';
 import '../styles/Sidebar.css';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
+
+
 
 const Sidebar = () => {
-  const handleCategoryClick = (index) => {
-    console.log(`Categoría ${index + 1} seleccionada`);
-    // Aquí puedes implementar la navegación o cualquier otra funcionalidad
+  const [jobCategory, setJobCategory] = useState([]);
+  const handleCategoryClick = (category) => {
+    console.log(`Categoría ${category} seleccionada`);
   };
+
+  useEffect(() => {
+    const fetchCategory = async () => {
+      try {
+        const response = await axios.get('http://localhost:5000/Categoria/Obtener');
+        setJobCategory(response.data);
+      } catch (error) {
+        console.error('Error al obtener los trabajos:', error);
+      }
+    };
+  
+    fetchCategory();
+  }, []);
+
 
   return (
     <div className="sidebar">
-      {[...Array(6)].map((_, i) => (
+      {jobCategory.map((category) => (
         <button 
-          key={i} 
+          key={category.id} 
           className="sidebar-btn" 
-          onClick={() => handleCategoryClick(i)} // Manejo de clics
-        >
-          Categoría {i + 1}
+          onClick={() => handleCategoryClick(category)}>
+          {category.nombre}
         </button>
       ))}
     </div>
